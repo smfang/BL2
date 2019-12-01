@@ -27,6 +27,22 @@ function generateShoppingItemsString(shoppingList) {
   return items.join("");
 }
 
+function removeItem(){
+	var ul = document.getElementById("shopping-list");
+  var shopping-item = document.getElementById("shopping-item");
+  var item = document.getElementById(shopping-item.value);
+  ul.removeChild(item);
+}
+
+function addItem(){
+    var ul = document.getElementById("shopping-list");
+    var shopping-item = document.getElementById("shopping-item");
+    var li = document.createElement("li");
+    li.setAttribute('id',shopping-item);
+    li.appendChild(document.createTextNode(shopping-item.value));
+    ul.appendChild(li);
+}
+
 
 function renderShoppingList() {
   // render the shopping list in the DOM
@@ -38,10 +54,6 @@ function renderShoppingList() {
 }
 
 
-function addItemToShoppingList(itemName) {
-  console.log(`Adding "${itemName}" to shopping-list`);
-  STORE.push({id: cuid(), name: itemName, checked: false});
-}
 
 function handleNewItemSubmit() {
   $('#js-shopping-list-form').submit(function(event) {
@@ -55,19 +67,14 @@ function handleNewItemSubmit() {
 }
 
 
-function removeItem(){
-	var ul = document.getElementById("shopping-list");
-  var shopping-item = document.getElementById("shopping-item");
-  var item = document.getElementById(shopping-item.value);
-  ul.removeChild(item);
-}
+
 
 function handleShoppingList() {
   renderShoppingList();
   handleNewItemSubmit();
   handleItemCheckClicked();
   removeItem();
-  addItemToShoppingList();
+  addItem();
 }
 
 // when the page loads, call `handleShoppingList`
