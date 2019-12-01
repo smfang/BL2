@@ -1,12 +1,6 @@
 
 'use strict';
 
-const STORE = [
-  {id: cuid(), name: "apples", checked: false},
-  {id: cuid(), name: "oranges", checked: false},
-  {id: cuid(), name: "milk", checked: true},
-  {id: cuid(), name: "bread", checked: false}
-];
 
 
 function generateItemElement(item) {
@@ -45,7 +39,7 @@ function renderShoppingList() {
 
 
 function addItemToShoppingList(itemName) {
-  console.log(`Adding "${itemName}" to shopping list`);
+  console.log(`Adding "${itemName}" to shopping-list`);
   STORE.push({id: cuid(), name: itemName, checked: false});
 }
 
@@ -61,22 +55,19 @@ function handleNewItemSubmit() {
 }
 
 
-function handleItemCheckClicked() {
-  
-  console.log('`handleItemCheckClicked` ran');
-}
-
-
-function handleDeleteItemClicked() {
- 
-  console.log('`handleDeleteItemClicked` ran')
+function removeItem(){
+	var ul = document.getElementById("shopping-list");
+  var shopping-item = document.getElementById("shopping-item");
+  var item = document.getElementById(shopping-item.value);
+  ul.removeChild(item);
 }
 
 function handleShoppingList() {
   renderShoppingList();
   handleNewItemSubmit();
   handleItemCheckClicked();
-  handleDeleteItemClicked();
+  removeItem();
+  addItemToShoppingList();
 }
 
 // when the page loads, call `handleShoppingList`
